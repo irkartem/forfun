@@ -25,8 +25,21 @@ def make_change(numbers, n):
             p += 1
     return result
 
-print(make_change([1,2,3], 4))
+def count(S, n):
+ 
+    m = len(S)
+    table = [0 for k in range(n+1)]
+    table[0] = 1
+    for i in range(0,m):
+        for j in range(S[i],n+1):
+            table[j] += table[j-S[i]]
+        print(table)
 
+    return table[n]
 
+(n,m) = input().strip().split(' ')
+ray = [ int(x) for x in input().strip().split(' ')]
+print(make_change(ray, int(n)))
+print(count(ray, int(n)))
 
 
