@@ -22,11 +22,20 @@ def next_permutation(arr):
     arr[i : ] = arr[len(arr) - 1 : i - 1 : -1]
     return True
 
-
-
+def checkPR(ray):
+    lst = []
+    for c in ray:
+        if c == '(':
+            lst.append(c)
+        if c == ')':
+            if len(lst) < 1 or lst.pop() != "(":
+                return False
+    return True
 
 ar = ['a','c','c','n','w'];
+ar = ['(','(','(','(',')',')',')',')'];
 
+if checkPR(ar): print ("".join(ar));
 while next_permutation(ar):
-    print (ar);
+    if checkPR(ar): print ("".join(ar));
 
